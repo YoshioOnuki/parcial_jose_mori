@@ -28,10 +28,22 @@ class Persona extends Model
         return $this->hasMany(Usuario::class, 'id_persona');
     }
 
+    public function empleado()
+    {
+        return $this->hasOne(Empleado::class, 'id_persona');
+    }
+
     public function getSoloPrimerosNombresAttribute()
     {
         $nombres = explode(' ', $this->nombres_persona);
         return $nombres[0] . ' ' . $this->apellido_pat_persona;
+    }
+
+    public function getPrimerosNombresJuntosAttribute()
+    {
+        $nombres = explode(' ', $this->nombres_persona);
+        return strtolower($nombres[0] . '' . $this->apellido_pat_persona);
+
     }
 
     public function getAvatarAttribute()

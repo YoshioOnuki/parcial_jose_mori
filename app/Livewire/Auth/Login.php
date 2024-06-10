@@ -22,7 +22,7 @@ class Login extends Component
     {
         $this->validate();
 
-        $usuario = Usuario::where('nombre_usuario', $this->usuario)->first();
+        $usuario = Usuario::where('correo_usuario', $this->usuario)->first();
         if ($usuario) {
             if (Hash::check($this->contraseña, $usuario->contrasenia_usuario)) {
                 auth()->login($usuario, false);

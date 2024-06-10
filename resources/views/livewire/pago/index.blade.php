@@ -79,6 +79,7 @@
                                         <th>Monto</th>
                                         <th>F. Pago</th>
                                         <th>Area</th>
+                                        <th>Excel</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,6 +102,9 @@
                                             </td>
                                             <td>
                                                 {{ $item->area->nombre_area }}
+                                            </td>
+                                            <td>
+                                                <button wire:click="exportExcel" class="btn btn-success">Export Pago</button>
                                             </td>
                                         </tr>
                                     @empty

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pago;
 
+use App\Exports\PagoExport;
 use App\Models\Empleado;
 use App\Models\Pago;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 #[Layout('components.layouts.app')]
 class Index extends Component
@@ -18,6 +20,11 @@ class Index extends Component
 
     #[Url('mostrar')]
     public $mostrar_paginate = 10;
+
+    public function exportExcel()
+    {
+        return Excel::download(new PagoExport, 'users.xlsx');
+    }
 
     public function generar_pagos2()
     {
